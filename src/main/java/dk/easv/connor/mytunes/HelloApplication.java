@@ -1,4 +1,4 @@
-package main.java.dk.easv.connor.mytunes;
+package dk.easv.connor.mytunes;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

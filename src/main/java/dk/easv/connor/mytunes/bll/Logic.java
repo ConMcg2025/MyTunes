@@ -1,4 +1,4 @@
-package main.java.dk.easv.connor.mytunes.bll;
+package dk.easv.connor.mytunes.bll;
 
 public class Logic {
 }
