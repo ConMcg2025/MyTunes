@@ -15,7 +15,7 @@ public class Logic {
 
     }
 
-    public List<Song> getAllSong() throws throws Exception {
+    public List<Song> getAllSong()  throws Exception {
         return dao.getSongDAO().getAllSongs();
     }
 
