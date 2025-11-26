@@ -15,5 +15,6 @@ public class HelloApplication extends Application {
         stage.setTitle("My Tunes!");
         stage.setScene(scene);
         stage.show();
+        int test = 1;
     }
 }
