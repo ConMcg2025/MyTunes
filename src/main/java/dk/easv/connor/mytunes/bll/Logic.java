@@ -1,6 +1,7 @@
 package dk.easv.connor.mytunes.bll;
 
 import dk.easv.connor.mytunes.be.Playlist;
+import dk.easv.connor.mytunes.be.Song;
 import dk.easv.connor.mytunes.be.song;
 import dk.easv.connor.mytunes.dal.DAOManager;
 
