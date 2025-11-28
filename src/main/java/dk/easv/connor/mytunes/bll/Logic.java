@@ -2,7 +2,6 @@ package dk.easv.connor.mytunes.bll;
 
 import dk.easv.connor.mytunes.be.Playlist;
 import dk.easv.connor.mytunes.be.Song;
-import dk.easv.connor.mytunes.be.song;
 import dk.easv.connor.mytunes.dal.DAOManager;
 
 import java.util.List;
@@ -16,9 +15,10 @@ public class Logic {
 
     }
 
-    public List<Song> getAllSong()  throws Exception {
+    public List<Song> getAllSongs() throws Exception {
         return dao.getSongDAO().getAllSongs();
     }
+
 
 
     public Song createSong(Song song) throws Exception {
@@ -44,6 +44,9 @@ public class Logic {
         return dao.getPlaylistDAO().getAllPlaylists();
     }
 
+    public List<Song> getSongsInPlaylist(Playlist playlist) throws Exception {
+        return dao.getPlaylistDAO().getSongsInPlaylist(playlist);
+    }
 
     public Playlist createPlaylist(Playlist playlist) throws Exception {
         return dao.getPlaylistDAO().createPlaylist(playlist);
@@ -60,9 +63,6 @@ public class Logic {
     }
 
 
-    public List<Song> getAllPlaylist() throws Exception {
-        return dao.getPlaylistDAO().getSongsInPlaylist(playlist);
-    }
 
     public void addSongToPlaylist(Playlist playlist, Song song) throws Exception {
         dao.getPlaylistDAO().addSongToPlaylist(playlist, song);
