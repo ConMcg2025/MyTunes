@@ -17,17 +17,17 @@
                   <Insets />
                </HBox.margin>
             </Label>
-            <TextField alignment="CENTER" prefHeight="40.0" prefWidth="200.0" />
+            <TextField fx:id="playlistNameText" alignment="CENTER" prefHeight="40.0" prefWidth="200.0" />
          </children>
       </HBox>
       <HBox prefHeight="50.0" prefWidth="300.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" text="Cancel">
+            <Button fx:id="newEditPlaylistCancelButton" mnemonicParsing="false" onAction="#onNewEditPlaylistCancelButtonClick" prefHeight="40.0" prefWidth="70.0" text="Cancel">
                <HBox.margin>
                   <Insets left="110.0" right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" text="Save" />
+            <Button fx:id="newEditPlaylistSaveButton" mnemonicParsing="false" onAction="#onNewEditPlaylistSaveButtonClick" prefHeight="40.0" prefWidth="70.0" text="Save" />
          </children>
       </HBox>
    </children>

@@ -16,33 +16,33 @@
    <children>
       <HBox prefHeight="40.0" prefWidth="900.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="50.0" text="&lt;&lt;">
+            <Button fx:id="reverseSongButton" mnemonicParsing="false" onAction="#onReverseSongButtonClick" prefHeight="40.0" prefWidth="50.0" text="&lt;&lt;">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="50.0" text="Play">
+            <Button fx:id="playSongButton" mnemonicParsing="false" onAction="#onPlaySongButtonClick" prefHeight="40.0" prefWidth="50.0" text="Play">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="50.0" text="&gt;&gt;">
+            <Button fx:id="skipSongButton" mnemonicParsing="false" onAction="#onSkipSongButtonClick" prefHeight="40.0" prefWidth="50.0" text="&gt;&gt;">
                <HBox.margin>
                   <Insets right="500.0" />
                </HBox.margin>
             </Button>
             <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="40.0" prefWidth="60.0" text="Filter: " />
-            <TextField prefHeight="40.0" prefWidth="150.0">
+            <TextField fx:id="filterSongText" prefHeight="40.0" prefWidth="150.0">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="Search" />
+            <Button fx:id="searchFilterButton" mnemonicParsing="false" onAction="#onSearchFilterButtonClick" prefHeight="40.0" prefWidth="60.0" text="Search" />
          </children>
       </HBox>
       <HBox prefHeight="50.0" prefWidth="900.0">
          <children>
-            <Slider prefHeight="50.0" prefWidth="170.0">
+            <Slider fx:id="volumeSlider" prefHeight="50.0" prefWidth="170.0">
                <HBox.margin>
                   <Insets right="200.0" />
                </HBox.margin>
@@ -67,72 +67,72 @@
       </HBox>
       <HBox prefHeight="500.0" prefWidth="900.0">
          <children>
-            <ListView prefHeight="200.0" prefWidth="200.0">
+            <ListView fx:id="playlistList" prefHeight="200.0" prefWidth="200.0">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </ListView>
-            <ListView prefHeight="200.0" prefWidth="200.0">
+            <ListView fx:id="songPlaylistList" prefHeight="200.0" prefWidth="200.0">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </ListView>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="50.0" text="&lt;">
+            <Button fx:id="songToPlaylistButton" mnemonicParsing="false" onAction="#onSongToPlaylistButtonClick" prefHeight="40.0" prefWidth="50.0" text="&lt;">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </Button>
-            <ListView prefHeight="200.0" prefWidth="420.0" />
+            <ListView fx:id="songList" prefHeight="200.0" prefWidth="420.0" />
          </children>
       </HBox>
       <HBox prefHeight="40.0" prefWidth="900.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="New">
+            <Button fx:id="newPlaylistButton" mnemonicParsing="false" onAction="#onNewPlaylistButtonClick" prefHeight="40.0" prefWidth="60.0" text="New">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="Edit">
+            <Button fx:id="editPlaylistButton" mnemonicParsing="false" onAction="#onEditPlaylistButtonClick" prefHeight="40.0" prefWidth="60.0" text="Edit">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="Delete">
+            <Button fx:id="deletePlaylistButton" mnemonicParsing="false" onAction="#onDeletePlaylistButtonClick" prefHeight="40.0" prefWidth="60.0" text="Delete">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="50.0" text="Up">
+            <Button fx:id="upSongPlaylistButton" mnemonicParsing="false" onAction="#onUpSongPlaylistButtonClick" prefHeight="40.0" prefWidth="50.0" text="Up">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="50.0" text="Down">
+            <Button fx:id="downSongPlaylistButton" mnemonicParsing="false" onAction="#onDownSongPlaylistButtonClick" prefHeight="40.0" prefWidth="50.0" text="Down">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="Delete">
+            <Button fx:id="deleteSongPlaylistButton" mnemonicParsing="false" onAction="#onDeleteSongPlaylistButtonClick" prefHeight="40.0" prefWidth="60.0" text="Delete">
                <HBox.margin>
                   <Insets right="110.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="New">
+            <Button fx:id="newSongButton" mnemonicParsing="false" onAction="#onNewSongButtonClick" prefHeight="40.0" prefWidth="60.0" text="New">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="Edit">
+            <Button fx:id="editSongButton" mnemonicParsing="false" onAction="#onEditSongButtonClick" prefHeight="40.0" prefWidth="60.0" text="Edit">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="Delete">
+            <Button fx:id="deleteSongButton" mnemonicParsing="false" onAction="#onDeleteSongButtonClick" prefHeight="40.0" prefWidth="60.0" text="Delete">
                <HBox.margin>
                   <Insets right="160.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="Close" />
+            <Button fx:id="closeApplicationButton" mnemonicParsing="false" onAction="#onCloseApplicationButtonClick" prefHeight="40.0" prefWidth="60.0" text="Close" />
          </children>
       </HBox>
    </children>

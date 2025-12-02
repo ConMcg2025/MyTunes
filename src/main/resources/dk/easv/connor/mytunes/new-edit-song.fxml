@@ -19,7 +19,7 @@
                   <Insets left="30.0" right="30.0" />
                </HBox.margin>
             </Label>
-            <TextField prefWidth="300.0" />
+            <TextField fx:id="songTitleText" prefWidth="300.0" />
          </children>
       </HBox>
       <HBox prefHeight="20.0" prefWidth="200.0" />
@@ -30,7 +30,7 @@
                   <Insets left="26.0" right="30.0" />
                </HBox.margin>
             </Label>
-            <TextField prefWidth="300.0" />
+            <TextField fx:id="songArtistText" prefWidth="300.0" />
          </children>
       </HBox>
       <HBox prefHeight="20.0" prefWidth="200.0" />
@@ -41,7 +41,7 @@
                   <Insets left="9.0" right="30.0" />
                </HBox.margin>
             </Label>
-            <DropdownButton>
+            <DropdownButton fx:id="songCategoryDropdown">
                 <items>
                     <MenuItem text="Pop" />
                     <MenuItem text="Rock" />
@@ -51,7 +51,7 @@
                   <Insets right="30.0" />
                </HBox.margin>
             </DropdownButton>
-            <Button mnemonicParsing="false" text="More..." />
+            <Button fx:id="moreSongCategoryButton" mnemonicParsing="false" onAction="#onMoreSongCategoryButtonClick" text="More..." />
          </children>
       </HBox>
       <HBox prefHeight="20.0" prefWidth="200.0" />
@@ -62,7 +62,7 @@
                   <Insets left="30.0" right="30.0" />
                </HBox.margin>
             </Label>
-            <TextField prefWidth="300.0" />
+            <TextField fx:id="songTimeText" prefWidth="300.0" />
          </children>
       </HBox>
       <HBox prefHeight="20.0" prefWidth="200.0" />
@@ -73,12 +73,12 @@
                   <Insets left="42.0" />
                </HBox.margin>
             </Label>
-            <TextField prefWidth="300.0">
+            <TextField fx:id="songFileText" prefWidth="300.0">
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" text="Choose...">
+            <Button fx:id="chooseFileButton" mnemonicParsing="false" onAction="#onChooseFileButtonClick" text="Choose...">
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
@@ -88,12 +88,12 @@
       <HBox prefHeight="40.0" prefWidth="600.0" />
       <HBox prefHeight="50.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" text="Cancel">
+            <Button fx:id="newEditSongCancelButton" mnemonicParsing="false" onAction="#onNewEditSongCancelButtonClick" text="Cancel">
                <HBox.margin>
                   <Insets left="362.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Save">
+            <Button fx:id="newEditSongSaveButton" mnemonicParsing="false" onAction="#onNewEditSongSaveButtonClick" text="Save">
                <HBox.margin>
                   <Insets left="25.0" />
                </HBox.margin>
