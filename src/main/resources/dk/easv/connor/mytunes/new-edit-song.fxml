@@ -34,26 +34,21 @@
          </children>
       </HBox>
       <HBox prefHeight="20.0" prefWidth="200.0" />
-      <HBox prefHeight="50.0" prefWidth="200.0">
-         <children>
-            <Label text="Category:">
-               <HBox.margin>
-                  <Insets left="9.0" right="30.0" />
-               </HBox.margin>
-            </Label>
-            <DropdownButton fx:id="songCategoryDropdown">
-                <items>
-                    <MenuItem text="Pop" />
-                    <MenuItem text="Rock" />
-                    <MenuItem text="Rap" />
-                </items>
-               <HBox.margin>
-                  <Insets right="30.0" />
-               </HBox.margin>
-            </DropdownButton>
-            <Button fx:id="moreSongCategoryButton" mnemonicParsing="false" onAction="#onMoreSongCategoryButtonClick" text="More..." />
-         </children>
-      </HBox>
+       <HBox prefHeight="50.0" prefWidth="200.0">
+           <children>
+               <Label text="Category:">
+                   <HBox.margin>
+                       <Insets left="9.0" right="30.0" />
+                   </HBox.margin>
+               </Label>
+               <TextField fx:id="songCategoryText" prefWidth="200.0">
+                   <HBox.margin>
+                       <Insets right="30.0" />
+                   </HBox.margin>
+               </TextField>
+               <Button fx:id="moreSongCategoryButton" mnemonicParsing="false" onAction="#onMoreSongCategoryButtonClick" text="More..." />
+           </children>
+       </HBox>
       <HBox prefHeight="20.0" prefWidth="200.0" />
       <HBox prefHeight="50.0" prefWidth="200.0">
          <children>
