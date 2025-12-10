@@ -18,9 +18,10 @@ public class ConnectionManager {
         ds.setDatabaseName("MyKTunes"); // make this unique as names are shared on server
         ds.setUser("CS2025b_e_1"); // Use your own username
         ds.setPassword("CS2025bE1#23"); // Use your own password
-        ds.setServerName("EASV-DB4");
+        ds.setServerName("10.176.111.34");
         ds.setPortNumber(1433);
         ds.setTrustServerCertificate(true);
+
     }
 
     public Connection connect() throws SQLServerException {
