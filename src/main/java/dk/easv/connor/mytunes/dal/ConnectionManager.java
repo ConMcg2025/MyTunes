@@ -1,4 +1,3 @@
-
 package dk.easv.connor.mytunes.dal;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
@@ -13,14 +12,16 @@ public class ConnectionManager {
     public ConnectionManager() {
         dataSource = new SQLServerDataSource();
 
-        SQLServerDataSource ds;
-        ds = new SQLServerDataSource();
-        ds.setDatabaseName("MyKTunes"); // make this unique as names are shared on server
-        ds.setUser("CS2025b_e_1"); // Use your own username
-        ds.setPassword("CS2025bE1#23"); // Use your own password
-        ds.setServerName("10.176.111.34");
-        ds.setPortNumber(1433);
-        ds.setTrustServerCertificate(true);
+        // Configure the data source
+        dataSource.setServerName("10.176.111.34"); // Server IP
+        dataSource.setPortNumber(1433); // Port
+
+        dataSource.setDatabaseName("MyKTunes"); 
+        dataSource.setUser("CS2025b_e_1"); // Username
+        dataSource.setPassword("CS2025bE1#23"); // Password
+        dataSource.setTrustServerCertificate(true);
+        dataSource.setEncrypt(false);
+
 
     }
 
