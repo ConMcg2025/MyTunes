@@ -11,12 +11,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
-public class HelloController {
+public class HelloController
+{
     @FXML
     private Button reverseSongButton;
 
@@ -82,6 +86,10 @@ public class HelloController {
     private ObservableList<Playlist> playlists;
     private ObservableList<Song> songsInPlaylist;
 
+    private MediaPlayer mediaPlayer;
+    private int currentIndex = -1;
+    private boolean playingFromPlaylist = false;
+
     @FXML
     public void initialize() {
         logic = new Logic();
@@ -92,6 +100,14 @@ public class HelloController {
         songList.setItems(songs);
         playlistList.setItems(playlists);
         songPlaylistList.setItems(songsInPlaylist);
+
+        volumeSlider.valueProperty().addListener((obs, oldV, newV) ->
+        {
+            if (mediaPlayer != null)
+            {
+                mediaPlayer.setVolume(newV.doubleValue());
+            }
+        });
 
         // Load data
         loadSongs();
@@ -118,22 +134,93 @@ public class HelloController {
         }
     }
 
-    public void onReverseSongButtonClick(ActionEvent actionEvent) {
-        // TODO: Implement previous song functionality
-        showInfo("Previous song - Not yet implemented");
+    private void playSong(Song song) {
+        try {
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+            }
+
+            Media media = new Media(new File(song.getFilePath()).toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setVolume(volumeSlider.getValue());
+            mediaPlayer.play();
+
+            mediaPlayer.setOnEndOfMedia(this::playNextSong);
+
+        } catch (Exception e) {
+            showError("Unable to play song: " + e.getMessage());
+        }
     }
 
-    public void onPlaySongButtonClick(ActionEvent actionEvent) {
-        // TODO: Implement play/pause functionality
-        showInfo("Play/Pause - Not yet implemented");
+    public void onReverseSongButtonClick(ActionEvent actionEvent)
+    {
+        playPreviousSong();
     }
 
-    public void onSkipSongButtonClick(ActionEvent actionEvent) {
-        // TODO: Implement next song functionality
-        showInfo("Next song - Not yet implemented");
+    private void playPreviousSong()
+    {
+        ObservableList<Song> list = playingFromPlaylist ? songsInPlaylist : songs;
+
+        if (list.isEmpty()) return;
+
+        currentIndex--;
+        if (currentIndex < 0) {
+            currentIndex = list.size() - 1;
+        }
+
+        playSong(list.get(currentIndex));
     }
 
-    public void onSearchFilterButtonClick(ActionEvent actionEvent) {
+    public void onPlaySongButtonClick(ActionEvent actionEvent)
+    {
+        if (mediaPlayer != null) {
+            MediaPlayer.Status status = mediaPlayer.getStatus();
+
+            if (status == MediaPlayer.Status.PLAYING) {
+                mediaPlayer.pause();
+                return;
+            } else if (status == MediaPlayer.Status.PAUSED) {
+                mediaPlayer.play();
+                return;
+            }
+        }
+
+        Song selected = songList.getSelectionModel().getSelectedItem();
+        Playlist pl = playlistList.getSelectionModel().getSelectedItem();
+
+        if (selected != null) {
+            playingFromPlaylist = false;
+            currentIndex = songList.getSelectionModel().getSelectedIndex();
+            playSong(selected);
+        } else if (pl != null && !songsInPlaylist.isEmpty()) {
+            playingFromPlaylist = true;
+            currentIndex = 0;
+            playSong(songsInPlaylist.get(0));
+        } else {
+            showError("Select a song or playlist to play.");
+        }
+    }
+
+    public void onSkipSongButtonClick(ActionEvent actionEvent)
+    {
+        playNextSong();
+    }
+
+    private void playNextSong()
+    {
+        ObservableList<Song> list = playingFromPlaylist ? songsInPlaylist : songs;
+
+        if (list.isEmpty()) return;
+
+        currentIndex++;
+        if (currentIndex >= list.size()) {
+            currentIndex = 0; // loop
+        }
+
+        playSong(list.get(currentIndex));
+    }
+
+public void onSearchFilterButtonClick(ActionEvent actionEvent) {
         String query = filterSongText.getText().trim();
         if (query.isEmpty()) {
             loadSongs();
@@ -203,14 +290,40 @@ public class HelloController {
         }
     }
 
-    public void onUpSongPlaylistButtonClick(ActionEvent actionEvent) {
-        // TODO: Implement move song up in playlist
-        showInfo("Move song up - Not yet implemented");
+    public void onUpSongPlaylistButtonClick(ActionEvent actionEvent)
+    {
+        Song song = songPlaylistList.getSelectionModel().getSelectedItem();
+        Playlist pl = playlistList.getSelectionModel().getSelectedItem();
+
+        if (song == null || pl == null) {
+            showError("Select a song and playlist.");
+            return;
+        }
+
+        try {
+            logic.moveSongUp(pl, song);
+            loadSongsInPlaylist(pl);
+        } catch (Exception e) {
+            showError("Cannot move song up: " + e.getMessage());
+        }
     }
 
-    public void onDownSongPlaylistButtonClick(ActionEvent actionEvent) {
-        // TODO: Implement move song down in playlist
-        showInfo("Move song down - Not yet implemented");
+    public void onDownSongPlaylistButtonClick(ActionEvent actionEvent)
+    {
+        Song song = songPlaylistList.getSelectionModel().getSelectedItem();
+        Playlist pl = playlistList.getSelectionModel().getSelectedItem();
+
+        if (song == null || pl == null) {
+            showError("Select a song and playlist.");
+            return;
+        }
+
+        try {
+            logic.moveSongDown(pl, song);
+            loadSongsInPlaylist(pl);
+        } catch (Exception e) {
+            showError("Cannot move song down: " + e.getMessage());
+        }
     }
 
     public void onDeleteSongPlaylistButtonClick(ActionEvent actionEvent) {
